@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--This document is in English-->
+<html lang="en">
+  <header>
+    <!--Set the title of this webpage-->
+    <title>Workshop Survey Form</title>
+    <!-- Use UTF-8 coding system -->
+    <meta charset="utf-8" />
+    <!--Set web page to follow size of screen-->
+    <meta name="viewport" content="width=device-width, initial-scale-1.0" />
+    <!--Use styles.css for css of this web page-->
+    <link rel="stylesheet" href="styles.css" />
+    <!--Page title-->
+    <h1 id="title">Workshop Survey Form</h1>
+    <!--Description under page title-->
+    <p id="description">Thank you for participating in our workshop</p>
+  </header>
+
+  <body>
+    
+    
+      <!--Form element to accept inputs from users-->
+      <form id="survey-form" action="https://www.freecodecamp.org/learn/2022">
+      <fieldset>
+        <!--Text input that accepts name of user-->
+        <label for="name" id="name-label">Name <input type="text" placeholder="Enter your name" id="name" required /></label>
+        <!--Email input that accepts email (Type="email" validates that input is an email)-->
+        <label for="email" id="email-label">Email <input type="email" placeholder="Enter your email" id="email" required /></label>
+        <!--Number input that accepts age-->
+      <label for="number" id="number-label">Age (Optional) <input type="number" placeholder="Age" id="number" min="6" max="12"/></label>
+      </fieldset>
+      <fieldset id ="recommendation">
+      <!--Recommendation section-->
+    <legend>Would you recommend this workshop to other people?</legend>
+        <!--3 radio buttons that only allows you to choose one-->
+        <!--Definitely option is chosen by default-->
+        <label for="recommendation-definitely"><input type="radio" name="recommendation" value="recommendation-definitely" id="recommendation-definitely" required checked/>Definitely</label>
+        <label for="recommendation-maybe"><input type="radio" name="recommendation" value="recommendation-maybe" id="recommendation-maybe" required/>Maybe</label>
+        <label for="recommendation-no"><input type="radio" name="recommendation" value="recommendation-no" id="recommendation-no" required/>No</label>
+      </fieldset>
+
+      <fieldset id="survey-form">
+      <!--Drop down list for participants to choose what they like about the event-->
+        <legend>What is your favourite event during the workshop?</legend>
+        <select id="dropdown">
+          <option value="1">How to create a good Password</option>
+          <option value="2">Phishing or Legit</option>
+          <option value="3">Quizziz</option>
+        </select>
+      </fieldset>
+
+      <!--Checkbox for future events-->
+      <fieldset>
+        <legend>What would you like to see next?</legend>
+        <label for="capture-the-flag"><input type="checkbox" id="capture-the-flag" name="future-event" value="capture-the-flag"/>Capture the Flag 101</label>
+        <label for="dark-web"><input type="checkbox" id="dark-web" name="future-event" value="dark-web"/>Dark Web 101</label>
+    </fieldset>
+
+  <!--Section to add comments-->
+  <fieldset id="comment-section">
+    <legend>Any comments or suggestions?</legend>
+    <textarea rows="5" cols="40" id="comments" placeholder="Enter your comments here..."></textarea>
+  </fieldset>
+
+    <!--Button to submit form-->
+    <label><input type="submit" value="Submit" id="submit"/></label>
+    </form>
+    
+  </body>
+
+  <footer>
+    <p>Made by <a href="https://github.com/trinuro">froginacup</a></p>
+  </footer>
+</html>
