@@ -1,0 +1,85 @@
+*{
+    font-family: "Open sans", sans-serif; /*Use open sans font*/
+  }
+  
+  .bold{
+    font-weight: 800; /*Make letters bold*/
+  }
+  
+  body{
+    margin: 1rem 0.5rem;
+  }
+  .grey-container{
+    background-color: #E6E6E6;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+  
+  header{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  header nav{
+    padding-top: 1rem;
+  }
+  header nav a{
+    color: black;
+    margin-right: 0.2rem;
+  }
+  header nav a:hover{
+    color: brown;
+  }
+  
+  main h1, main p, main figure, main h2{
+    text-align: center; /*Align text in main to the center*/
+  }
+  
+  main figure{
+      margin: 0 auto; /*Position image in the center*/
+      background-color: white;
+      padding: 1rem;
+      border-radius: 5px;
+      max-width: 1000px;
+  
+  }
+  #image{
+      max-width: 100%; /*This means that the picture can be at most 36% of original width*/
+      height: auto; /*Auto height enables us to resize the picture*/
+      max-height: 480px;
+      padding-bottom: 1rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  
+  #timeline ul li{
+    margin: 2rem 0;
+  }
+  #timeline{
+    width: 80%;
+    margin: 2rem auto;
+    max-width: 1032px;
+  }
+  
+  #quotes{
+    margin-bottom: 3rem;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  #quotes p{
+    margin: 2rem 0;
+  }
+  
+  #tribute-info{
+    text-align: center;  
+  }
+  
+  #tribute-link a{
+    color: black;
+  }
+  #tribute-link a:hover{
+    color: brown;
+  }
