@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Java JDBC Documentation</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="styles.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800"/>  </head>
+  <body>
+    <nav id="navbar">
+      <header>Processing SQL Statements with JDBC
+</header>
+      <a href="#Introduction" class="nav-link">Introduction</a>
+      <a href="#Establishing_Connections" class="nav-link">Establishing Connections</a>
+      <a href="#Creating_Statements" class="nav-link">Creating Statements</a>
+      <a href="#Executing_Queries" class="nav-link">Executing Queries</a>
+      <a href="#Processing_ResultSet_Objects" class="nav-link">Processing ResultSet Objects</a>
+      <a href="#Closing_Connections" class="nav-link">Closing Connections</a>
+      <a href="#Reference" class="nav-link">Reference</a>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="Introduction">
+        <header>Introduction</header>
+        <p>In general, to process any SQL statement with JDBC, you follow these steps:
+        <ol>
+          <li>Establishing a connection.</li>
+          <li>Create a statement.</li>
+          <li>Execute the query.</li>
+          <li>Process the ResultSet object.</li>
+          <li>Close the connection.</li>
+        </ol>
+        </p>
+        <p>This page uses the following method, CoffeesTable.viewTable, from the tutorial sample to demonstrate these steps. This method outputs the contents of the table COFFEES. This method will be discussed in more detail later in this tutorial:</p>
+        <code>
+        public static void viewTable(Connection con) throws SQLException {<br>
+          String query = "select COF_NAME, SUP_ID, PRICE, SALES, TOTAL from COFFEES";<br>
+          try (Statement stmt = con.createStatement()) {<br>
+            ResultSet rs = stmt.executeQuery(query);<br>
+            while (rs.next()) {<br>
+              String coffeeName = rs.getString("COF_NAME");<br>
+              int supplierID = rs.getInt("SUP_ID");<br>
+              float price = rs.getFloat("PRICE");<br>
+              int sales = rs.getInt("SALES");<br>
+              int total = rs.getInt("TOTAL");<br>
+              System.out.println(coffeeName + ", " + supplierID + ", " + price +<br>
+                                ", " + sales + ", " + total);<br>
+            }<br>
+          } catch (SQLException e) {<br>
+            JDBCTutorialUtilities.printSQLException(e);<br>
+          }<br>
+        }<br>
+        </code>
+
+      </section>
+
+      <section class="main-section" id="Establishing_Connections">
+         <header>Establishing Connections</header>
+         <p>First, establish a connection with the data source you want to use. A data source can be a DBMS, a legacy file system, or some other source of data with a corresponding JDBC driver. This connection is represented by a Connection object. See <a href="https://docs.oracle.com/javase/tutorial/jdbc/basics/connecting.html">Establishing a Connection</a> for more information.</p>
+
+      </section>
+
+      <section class="main-section" id="Creating_Statements">
+        <header>Creating Statements</header>
+        <p>A Statement is an interface that represents a SQL statement. You execute Statement objects, and they generate ResultSet objects, which is a table of data representing a database result set. You need a Connection object to create a Statement object.</p>
+        <p>For example, CoffeesTable.viewTable creates a Statement object with the following code:</p>
+        <code>stmt = con.createStatement();</code>
+        <p>There are three different kinds of statements:
+          <ul>
+            <li><span class="italics">Statement:</span> Used to implement simple SQL statements with no parameters.</li>
+            <li><span class="italics">PreparedStatement:</span> (Extends Statement.) Used for precompiling SQL statements that might contain input parameters. See Using <a href="https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html">Prepared Statements</a> for more information.</li>
+            <li><span class="italics">CallableStatement:</span> (Extends PreparedStatement.) Used to execute stored procedures that may contain both input and output parameters. See <a href="https://docs.oracle.com/javase/tutorial/jdbc/basics/storedprocedures.html">Stored Procedures</a> for more information.</li>
+          </ul>
+        </p>
+      </section>
+
+      <section class="main-section" id="Executing_Queries">
+        <header>Executing Queries</header>
+        <p>To execute a query, call an execute method from Statement such as the following:
+          <ul>
+            <li><span class="italics">execute:</span> Returns true if the first object that the query returns is a ResultSet object. Use this method if the query could return one or more ResultSet objects. Retrieve the ResultSet objects returned from the query by repeatedly calling Statement.getResultSet.</li>
+            <li><span class="italics">executeQuery:</span> Returns one ResultSet object.</li>
+            <li><span class="italics">executeUpdate:</span> Returns an integer representing the number of rows affected by the SQL statement. Use this method if you are using INSERT, DELETE, or UPDATE SQL statements.</li>
+          </ul>
+        </p>
+        <p>For example, CoffeesTable.viewTable executed a Statement object with the following code:</p>
+        <code>ResultSet rs = stmt.executeQuery(query);</code>
+        <p>See <a href="https://docs.oracle.com/javase/tutorial/jdbc/basics/retrieving.html">Retrieving and Modifying Values from Result Sets</a> for more information.</p>
+      </section>
+      <section class="main-section" id="Processing_ResultSet_Objects">
+        <header>Processing ResultSet Objects</header>
+        <p>You access the data in a ResultSet object through a cursor. Note that this cursor is not a database cursor. This cursor is a pointer that points to one row of data in the ResultSet object. Initially, the cursor is positioned before the first row. You call various methods defined in the ResultSet object to move the cursor.</p>
+        <p>For example, CoffeesTable.viewTable repeatedly calls the method ResultSet.next to move the cursor forward by one row. Every time it calls next, the method outputs the data in the row where the cursor is currently positioned:</p>
+        <code>
+      ResultSet rs = stmt.executeQuery(query);<br>
+      while (rs.next()) {<br>
+        String coffeeName = rs.getString("COF_NAME");<br>
+        int supplierID = rs.getInt("SUP_ID");<br>
+        float price = rs.getFloat("PRICE");<br>
+        int sales = rs.getInt("SALES");<br>
+        int total = rs.getInt("TOTAL");<br>
+        System.out.println(coffeeName + ", " + supplierID + ", " + price +
+                           ", " + sales + ", " + total);<br>
+      }<br>
+      // ...<br>
+        </code>
+      <p>See <a href="https://docs.oracle.com/javase/tutorial/jdbc/basics/retrieving.html">Retrieving and Modifying Values from Result Sets</a> for more information.</p>
+      </section>
+
+      <section class="main-section" id="Closing_Connections">
+        <header>Closing Connections</header>
+        <p>When you are finished using a Connection, Statement, or ResultSet object, call its close method to immediately release the resources it's using.</p>
+        <p>Alternatively, use a try-with-resources statement to automatically close Connection, Statement, and ResultSet objects, regardless of whether an SQLException has been thrown. (JDBC throws an SQLException when it encounters an error during an interaction with a data source. See <a href="https://docs.oracle.com/javase/tutorial/jdbc/basics/sqlexception.html">Handling SQL Exceptions</a> for more information.) An automatic resource statement consists of a try statement and one or more declared resources. For example, the CoffeesTable.viewTable method automatically closes its Statement object, as follows:</p>
+        <code>
+            public static void viewTable(Connection con) throws SQLException {<br>
+    String query = "select COF_NAME, SUP_ID, PRICE, SALES, TOTAL from COFFEES";<br>
+    try (Statement stmt = con.createStatement()) {<br>
+      ResultSet rs = stmt.executeQuery(query);<br>
+      while (rs.next()) {<br>
+        String coffeeName = rs.getString("COF_NAME");<br>
+        int supplierID = rs.getInt("SUP_ID");<br>
+        float price = rs.getFloat("PRICE");<br>
+        int sales = rs.getInt("SALES");<br>
+        int total = rs.getInt("TOTAL");<br>
+        System.out.println(coffeeName + ", " + supplierID + ", " + price +<br>
+                           ", " + sales + ", " + total);<br>
+      }<br>
+    } catch (SQLException e) {<br>
+      JDBCTutorialUtilities.printSQLException(e);<br>
+    }<br>
+  }<br>
+        </code>
+        <p>The following statement is a try-with-resources statement, which declares one resource, stmt, that will be automatically closed when the try block terminates:</p>
+        <code>
+    try (Statement stmt = con.createStatement()) {<br>
+      // ...<br>
+    }<br>
+        </code>
+        <p>See The <a href="https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html">try-with-resources Statement</a> in the <a href="https://docs.oracle.com/javase/tutorial/essential/index.html">Essential Classes</a> trail for more information.</p>
+      </section>
+      <section class="main-section" id="Reference">
+        <header>Reference</header>
+        <p>All information in this page is taken from this Oracle <a href="https://docs.oracle.com/javase/tutorial/jdbc/basics/processingsqlstatements.html">Java Tutorial Page</a>. Created by <a href="https://github.com/trinuro">@froginacup</a></p>
+      </section>
+    </main>
+  </body>
+</html>
