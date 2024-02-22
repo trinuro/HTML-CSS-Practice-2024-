@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--Standard head -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Palindrome Checker</title>
+    <!--To import Open sans-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800"/>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <h1>froginacup's Palindrome Checker</h1>
+    <main>
+      <section id = "user-section">
+        <p class ="prompt">Enter a text to check for palindrome:</p>
+        <!--Can use onsubmit, but I will add in javascript instead-->
+        <form>
+          <input type = "text" id="text-input" required/>
+          <button id="check-btn" type="submit">Check!</button>
+        </form>
+        <div id="result"></div>
+      </section>
+      <section class="trivia">
+        <p><span>Palindrome</span>: a word, phrase, or sequence that reads the same backwards as forwards, e.g. madam or nurses run.</p>
+      </section>
+    </main>
+
+  </body>
+  <script src="script.js"></script>
+</html>

@@ -1,0 +1,62 @@
+:root{
+  --color1: rgb(253, 240, 209);
+  --color2: rgb(172, 125, 136);
+  --color3: rgb(133, 88, 111);
+  --color4: rgb(100, 56, 67);
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  background-color: var(--color1);
+  color: var(--color4);
+  font-family: "open sans", sans-serif;
+  font-size: 1.5rem;
+}
+
+h1{
+  text-align: center;
+}
+
+main{
+  text-align: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+#text-input{
+  border-top:none;
+  border-left: none;
+  border-right:none;
+  background-color: var(--color1);
+  color: var(--color3);
+  font-family: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid var(--color3);
+
+}
+
+#check-btn{
+  background-color: var(--color4);
+  color: var(--color1);
+  border: none;
+  font-size: 1.3rem;
+  padding: 0.4rem;
+
+}
+
+#check-btn:hover{
+  transform: scale(1rem);
+  cursor: pointer;
+}
+
+.trivia{
+  margin-top: 3rem;
+  background-color: var(--color3);
+  color: var(--color1);
+  padding: 1.8rem 1rem;
+  border-radius: 5%;
+}
