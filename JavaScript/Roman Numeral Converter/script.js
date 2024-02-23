@@ -75,6 +75,11 @@ const reset = () =>{
   userInput.value = "";
 };
 
+// Easter egg function
+const gratitude = () => {
+  document.getElementById("easter-egg").showModal();
+};
+
 // Onclick event listener
 convertBtn.addEventListener("click", ()=>{
   updateResult(convertDecToRoman(userInput.value));
@@ -87,3 +92,12 @@ userInput.addEventListener("keydown", (e)=>{
     reset();
   }
 });
+
+// Easter egg button
+document.getElementById("whats-this").addEventListener("click", ()=>{
+  gratitude();
+})
+
+document.getElementById("close-popup").addEventListener("click", ()=>{
+  document.getElementById("easter-egg").close();
+})
