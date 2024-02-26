@@ -1,0 +1,43 @@
+:root{
+  --color1: rgb(12, 45, 87);
+  --color2: rgb(252, 103, 54);
+  --color3: rgb(255, 176, 176);
+  --color4: rgb(239, 236, 236);
+}
+
+body{
+  background-color: var(--color1);
+  color: var(--color4);
+  text-align: center;
+  display: grid;
+  grid-template-rows: 1fr 5fr;
+
+}
+
+
+
+section:nth-of-type(2){
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 0 auto;
+  gap: 1rem;
+  padding-bottom: 2rem;
+}
+
+input{
+  font-size: 2rem;
+  text-align: center;
+}
+
+button{
+  font-size:1.3rem;
+}
+
+#price{
+  color: var(--color3);
+}
+
+#change-due{
+  color: var(--color2);
+}

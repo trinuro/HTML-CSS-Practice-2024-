@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--To import Open sans-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <title>Froginacup's Pokédex</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Froginacup's Pokédex</h1>
+    </header>
+
+    <main>
+      <div></div>
+      <div id="middle-div">
+      <section id="search-section">
+        <p>Search for a Pokémon with its name or ID</p>
+        <input type="string" id="search-input" required/>
+        <button type="button" id="search-button">Search</button>
+      </section>
+
+      <section id="output-section">
+        <div>
+          <h2>
+            <span id="pokemon-name"></span>
+            <span id="pokemon-id"></span>
+          </h2>
+          <div id="pokemon-img"></div>
+          <p id="weight"></p>
+          <p id="height"></p>
+          <div id="types"></div>
+          <section>
+          <button id="toggle-shiny">Shiny version</button>
+          </section>
+          
+        </div>
+
+
+        <table id="output">
+          <thead>
+            <th>Base</th>
+            <th>Stats</th>
+          </thead>
+          <tr>
+            <th>HP</th>
+            <td id="hp"></td>
+          </tr>
+          <tr>
+            <th>Attack</th>
+            <td id="attack"></td>
+          </tr>
+          <tr>
+            <th>Defense</th>          
+            <td id="defense"></td>
+          </tr>
+          <tr>
+            <th>Special Attack</th>          
+            <td id="special-attack"></td>
+          </tr>
+          <tr>
+            <th>Special Defense</th>          
+            <td id="special-defense"></td>
+          </tr>
+          <tr>
+            <th>Speed</th>
+            <td id="speed"></td>
+          </tr>
+        </table>
+        </section>
+        
+        </div>
+        <div></div>
+      
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
